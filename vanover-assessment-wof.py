@@ -168,9 +168,9 @@ def buyVowel(playerNum):
     goodGuess = None
     # Take in a player number
     # Ensure player has 250 for buying a vowelcost
-    if players[playerNum]['roundtotal'] >=250:
-        players[playerNum]['roundtotal'] -= 250
-        players[playerNum]['gametotal'] -= 250
+    if players[playerNum]['roundtotal'] >= vowelcost:
+        players[playerNum]['roundtotal'] -= vowelcost
+        players[playerNum]['gametotal'] -= vowelcost
         vowelguess = input("Enter a vowel: ").upper()
         if vowelguess.lower() not in vowels:
             print("Please guess a vowel.")

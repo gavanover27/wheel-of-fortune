@@ -1,2 +1,1 @@
-Add your text here and use string.format or string.format_map
-with {variables} to template strings
+"We are now entering the final round. There will be only one word in this round. We will reveal the letter "R, S, T, L, N, E" and then you will get the chance to guess 3 consonants and 1 vowel. After all of those letters have been revealed you have one chance to guess the word and win the grand prize!"

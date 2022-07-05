@@ -17,7 +17,7 @@ maxrounds = 3
 vowelcost = 250
 
 # final prize, you fill this in
-finalprize = 100
+finalprize = 10000
 
 # final round, change if needed.
 finalRoundTextLoc = (r'C:\Users\cadba\Documents\Repositories\Assessments\M06-Python-Basics\wheel-of-fortune\data\finalround.txt')

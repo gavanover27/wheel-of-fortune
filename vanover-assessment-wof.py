@@ -96,9 +96,6 @@ def wofRoundSetup():
     global roundWord
     global blankWord
     # Set round total for each player = 0
-    players[0]['roundtotal'] = 0
-    players[1]['roundtotal'] = 0
-    players[2]['roundtotal'] = 0
     # Return the starting player number (random)
     initPlayer = random.choice(range(0,3))
     # Use getWord function to retrieve the word and the underscore word (blankWord)
@@ -223,7 +220,7 @@ def wofTurn(playerNum):
     # and Ask to (s)pin the wheel, (b)uy vowel, or G(uess) the word using
     # Keep doing all turn activity for a player until they guess wrong
     # Do all turn related activity including update roundtotal 
-    
+    print(f"It is player {playerNum}'s turn.")
     stillinTurn = True
     while stillinTurn:
         choice = input("Would you like to (S)pin the wheel, (B)uy vowel, or (G)uess the word: ")
@@ -253,9 +250,11 @@ def wofRound():
     initPlayer = wofRoundSetup()
     unsolved = True
     print(blankWord)
-    print(f"Player {initPlayer}'s turn")
     while unsolved:
-        unsolved = wofTurn(initPlayer)
+        for i in range(0,3):
+            unsolved = wofTurn(i)
+            if unsolved == False:
+                break
 
     # Keep doing things in a round until the round is done ( word is solved)
         # While still in the round keep rotating through players
@@ -296,7 +295,14 @@ def wofFinalRound():
     print(blankWord)
     # Remember guessletter should fill in the letters with the positions in blankWord
     # Get user to guess word
-    guessWord(winningPlayer)
+    finalWordGuess = input("Enter your final word guess: ").upper()
+    if finalWordGuess == roundWord:
+        blankWord = roundWord
+        players[winningPlayer]['gametotal'] += finalprize
+        print(f"Congrats, the word was {roundWord}, you are correct! You win ${players[winningPlayer]['gametotal']}!")
+    # Fill in blankList with all letters, instead of underscores if correct 
+    if finalWordGuess != roundWord:
+        print(f"Sorry, that is incorrect. You still win {players[winningPlayer]['gametotal']}")
     # If they do, add finalprize and gametotal and print out that the player won 
 
 
@@ -305,6 +311,9 @@ def main():
 
     for i in range(0,maxrounds):
         if i in [0,1]:
+            players[0]['roundtotal'] = 0
+            players[1]['roundtotal'] = 0
+            players[2]['roundtotal'] = 0
             print(f"We are now starting round {i + 1}")
             wofRound()
             print(roundstatus.format(ROUNDNUM = i+1))

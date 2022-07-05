@@ -250,14 +250,12 @@ def wofRound():
     global roundWord
     global blankWord
     global roundstatus
-    print(players)
     initPlayer = wofRoundSetup()
     unsolved = True
     print(blankWord)
     print(f"Player {initPlayer}'s turn")
     while unsolved:
         unsolved = wofTurn(initPlayer)
-    print("It's Over")
 
     # Keep doing things in a round until the round is done ( word is solved)
         # While still in the round keep rotating through players
@@ -307,7 +305,10 @@ def main():
 
     for i in range(0,maxrounds):
         if i in [0,1]:
+            print(f"We are now starting round {i + 1}")
             wofRound()
+            print(roundstatus.format(ROUNDNUM = i+1))
+            print(players)
         else:
             wofFinalRound()
 
